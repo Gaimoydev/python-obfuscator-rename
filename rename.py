@@ -158,9 +158,17 @@ def obfuscate_code(file_path, prefix, length, charset, removedocs, do_not_rename
         f.write(obfuscated_code)
     print(water(f"[+] Successfully Rename: {output_file}"))
 
+def obfuscate_code_for_folder(folder_path, prefix, length, charset, removedocs, do_not_rename):
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".py"):
+                file_path = os.path.join(root, file)
+                print(water(f"[+] Processing file: {file_path}"))
+                obfuscate_code(file_path, prefix, length, charset, removedocs, do_not_rename)
+
 def main():
     parser = argparse.ArgumentParser(description="pnic-obf")
-    parser.add_argument("--i", required=True, help="input python file")
+    parser.add_argument("--i", required=True, help="input python file or folder")
     parser.add_argument("--prefix", default="_", help="name prefix(_ = _0xd)")
     parser.add_argument("--length", type=int, default=8, help="name length(8)")
     parser.add_argument("--charset", default="ᕾᕸᖙ", help="name charset(il, o0, ᕾᕸᖙ, 髢ｫ)")
@@ -174,7 +182,10 @@ def main():
 
     do_not_rename = set(args.norename.split(",")) if args.norename else set()
 
-    obfuscate_code(args.i, args.prefix, args.length, args.charset, args.removedocs, do_not_rename)
+    if os.path.isdir(args.i):
+        obfuscate_code_for_folder(args.i, args.prefix, args.length, args.charset, args.removedocs, do_not_rename)
+    else:
+        obfuscate_code(args.i, args.prefix, args.length, args.charset, args.removedocs, do_not_rename)
 
 if __name__ == "__main__":
     main()

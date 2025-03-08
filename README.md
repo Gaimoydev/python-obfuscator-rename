@@ -2,7 +2,7 @@
 
 ## :dart: About ##
 
-The code used https://github.com/0sir1ss/Carbon
+[think](https://github.com/0sir1ss/Carbon) modify&add
 
 ## :sparkles: Features ##
 

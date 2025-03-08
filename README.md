@@ -7,7 +7,7 @@ The code used https://github.com/0sir1ss/Carbon
 ## :sparkles: Features ##
 
 :heavy_check_mark: Remove docstrings and comments\
-:heavy_check_mark: Rename classes, functions, parameters and variables
+:heavy_check_mark: Rename classes, functions, parameters and variables\
 :heavy_check_mark: More custom options: prefix, length, charset, norename, isremovedocs...
 
 ## :rocket: Technologies ##
